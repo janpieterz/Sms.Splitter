@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Sms.Splitter")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("An sms splitter that will tell you the parts in the message.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Jan-Pieter Zoutewelle")]
 [assembly: AssemblyProduct("Sms.Splitter")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
