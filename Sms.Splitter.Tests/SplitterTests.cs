@@ -33,6 +33,8 @@ namespace Sms.Splitter.Tests
         [InlineData("Snowman shows off!", 142)]
         [InlineData("Snowman shows off! ☃", 50)]
         [InlineData("Snowman shows off! ☃ Snowman shows off! ☃ Snowman shows off! ☃ Snowman shows off! ☃ ", 50)]
+        [InlineData("මට නැහැaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccccccccccccccccccccccccc sdddddddddddddddddddddddddddddddddddddddddddddddddddd", 37)]
+        [InlineData("XXXXXXXXXXXXXXXXXXXX 50% ooo YYYYYYY when yoy sxxxx £$30 😍 o mouse! Click http://zzzzzzzzz.zzzz of xse AAAAA50% @ bbbbbbb.co.uk TKCx Opppux STO Top 077777777777", 40)]
         public void TestRemainingParts(string content, int expectedRemaining)
         {
             Splitter splitter = new Splitter();
