@@ -37,7 +37,14 @@ namespace Sms.Splitter
         }
         internal bool Validate(string content)
         {
-            return content.All(ValidateCharacter);
+            foreach (char character in content)
+            {
+                if (!ValidateCharacter(character))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         internal bool ValidateExtendedCharacter(char character)

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.CodeDom;
 using System.Linq;
-using System.Security.Cryptography;
 
 namespace Sms.Splitter
 {
