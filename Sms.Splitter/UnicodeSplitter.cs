@@ -76,7 +76,7 @@ namespace Sms.Splitter
             {
                 Bytes = walker.Bytes,
                 Length = walker.Length,
-                Content = partEnd.HasValue ? content.Substring(walker.PartStart, partEnd.Value + 1) : content.Substring(walker.PartStart)
+                Content = partEnd.HasValue ? content.Substring(walker.PartStart, (partEnd.Value + 1) - walker.PartStart) : content.Substring(walker.PartStart)
             });
             result.TotalBytes += walker.Bytes;
             result.TotalLength += walker.Length;
