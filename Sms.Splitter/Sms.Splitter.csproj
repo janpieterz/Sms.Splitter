@@ -7,10 +7,11 @@
     <Product />
     <Description>Splits up a string into separate parts of a text message. Useful for calculating text message parts, ensuring the parts get sent in the correct way and general SMS manipulation tasks.</Description>
     <Copyright>Copyright 2019</Copyright>
-    <PackageLicenseUrl>https://github.com/janpieterz/Sms.Splitter/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression >MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/janpieterz/Sms.Splitter</PackageProjectUrl>
     <RepositoryUrl>https://github.com/janpieterz/Sms.Splitter</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
