@@ -1,7 +1,5 @@
 ﻿using System;
-using System.CodeDom;
 using System.Linq;
-using System.Security.Cryptography;
 
 namespace Sms.Splitter
 {
@@ -77,13 +75,13 @@ namespace Sms.Splitter
             {
                 Bytes = walker.Bytes,
                 Length = walker.Length,
-				Content = partEnd.HasValue ? content.Substring(walker.PartStart, (partEnd.Value + 1) - walker.PartStart) : content.Substring(walker.PartStart)
-			});
+                Content = partEnd.HasValue ? content.Substring(walker.PartStart, (partEnd.Value + 1) - walker.PartStart) : content.Substring(walker.PartStart)
+            });
             result.TotalBytes += walker.Bytes;
             result.TotalLength += walker.Length;
-			result.TotalCharacters = result.TotalBytes / 2;
+			      result.TotalCharacters = result.TotalBytes / 2;
 
-			walker.Bytes = 0;
+			      walker.Bytes = 0;
             walker.Length = 0;
             walker.PartStart = partEnd + 1 ?? 0;
         }
