@@ -70,7 +70,8 @@ namespace Sms.Splitter
                 {
                     Bytes = result.TotalBytes,
                     Length = result.TotalLength,
-                    Content = result.Parts[0].Content + result.Parts[1].Content
+                    Content = result.Parts[0].Content + result.Parts[1].Content,
+					Characters = result.TotalBytes
                 };
                 result.Parts.Clear();
                 result.Parts.Add(part);
@@ -102,7 +103,8 @@ namespace Sms.Splitter
             });
             result.TotalBytes += walker.Bytes;
             result.TotalLength += walker.Length;
-            walker = GetEmptyWalker();
+			result.TotalCharacters = result.TotalBytes;
+			walker = GetEmptyWalker();
         }
 
         private MessageWalker GetEmptyWalker()

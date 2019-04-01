@@ -51,11 +51,12 @@ namespace Sms.Splitter
             }
             if (result.Parts.Count == 2 && result.TotalBytes <= 140)
             {
-                SplitPart part = new SplitPart
-                {
-                    Content = result.Parts[0].Content + result.Parts[1].Content,
-                    Length = result.TotalLength,
-                    Bytes = result.TotalBytes
+				SplitPart part = new SplitPart
+				{
+					Content = result.Parts[0].Content + result.Parts[1].Content,
+					Length = result.TotalLength,
+					Bytes = result.TotalBytes,
+					Characters = result.TotalBytes / 2
                 };
                 result.Parts.Clear();
                 result.Parts.Add(part);
@@ -76,12 +77,13 @@ namespace Sms.Splitter
             {
                 Bytes = walker.Bytes,
                 Length = walker.Length,
-                //Content = partEnd.HasValue ? content.Substring(walker.PartStart, partEnd.Value + 1) : content.Substring(walker.PartStart)
-                Content = partEnd.HasValue ? content.Substring(walker.PartStart, (partEnd.Value + 1) - walker.PartStart) : content.Substring(walker.PartStart)
-            });
+				Content = partEnd.HasValue ? content.Substring(walker.PartStart, (partEnd.Value + 1) - walker.PartStart) : content.Substring(walker.PartStart)
+			});
             result.TotalBytes += walker.Bytes;
             result.TotalLength += walker.Length;
-            walker.Bytes = 0;
+			result.TotalCharacters = result.TotalBytes / 2;
+
+			walker.Bytes = 0;
             walker.Length = 0;
             walker.PartStart = partEnd + 1 ?? 0;
         }
