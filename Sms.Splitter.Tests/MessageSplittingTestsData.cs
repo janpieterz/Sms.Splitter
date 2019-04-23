@@ -15,7 +15,7 @@ namespace Sms.Splitter.Tests
                 new List<SplitPart>() { new SplitPart()
                 {
                     Bytes = 160,
-                    Length = 160,
+                    Characters = 160,
                     Content = "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15-------<"
                 } }
             },
@@ -30,13 +30,13 @@ namespace Sms.Splitter.Tests
                     new SplitPart()
                     {
                         Bytes = 153,
-                        Length = 153,
+                        Characters = 153,
                         Content = "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15-"
                     },
                     new SplitPart()
                     {
                         Bytes = 8,
-                        Length = 8,
+                        Characters = 8,
                         Content = "------<1"
                     }
                 }
@@ -53,13 +53,13 @@ namespace Sms.Splitter.Tests
                     {
                         Content = "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15-",
                         Bytes = 153,
-                        Length = 153
+                        Characters = 153
                     },
                     new SplitPart()
                     {
                         Content = "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15-",
                         Bytes = 153,
-                        Length = 153
+                        Characters = 153
                     }
                 }
             },
@@ -75,19 +75,19 @@ namespace Sms.Splitter.Tests
                     {
                         Content = "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15-",
                         Bytes = 153,
-                        Length = 153
+                        Characters = 153
                     },
                     new SplitPart()
                     {
                         Content = "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15-",
                         Bytes = 153,
-                        Length = 153
+                        Characters = 153
                     },
                     new SplitPart()
                     {
                         Content = "-",
                         Bytes = 1,
-                        Length = 1
+                        Characters = 1
                     }
                 }
             },
@@ -96,18 +96,18 @@ namespace Sms.Splitter.Tests
                 //Split 160 character message ending with extended character
                 "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15-------€",
                 161,
-                160,
+                161,
                 new List<SplitPart> {
                     new SplitPart
                     {
                         Content = "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15-",
-                        Length = 153,
+                        Characters = 153,
                         Bytes = 153
                     },
                     new SplitPart()
                     {
                         Content = "------€",
-                        Length = 7,
+                        Characters = 8,
                         Bytes = 8
                     }
                 }
@@ -117,19 +117,19 @@ namespace Sms.Splitter.Tests
                 //Split 160 character message with an extended character at the 153rd index
                 "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15€------<",
                 161,
-                160,
+                161,
                 new List<SplitPart>
                 {
                     new SplitPart
                     {
                         Content = "0--------<1--------<2--------<3--------<4--------<5--------<6--------<7--------<8--------<9--------<10-------<11-------<12-------<13-------<14-------<15",
-                        Length = 152,
+                        Characters = 152,
                         Bytes = 152
                     },
                     new SplitPart
                     {
                         Content = "€------<",
-                        Length = 8,
+                        Characters = 9,
                         Bytes = 9
                     }
                 }
@@ -139,13 +139,13 @@ namespace Sms.Splitter.Tests
                 //Split 80 character message with all extended characters
                 "\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\",
                 160,
-                80,
+                160,
                 new List<SplitPart>
                 {
                     new SplitPart
                     {
                         Content = "\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\",
-                        Length = 80,
+                        Characters = 160,
                         Bytes = 160
                     }
                 }
@@ -155,31 +155,31 @@ namespace Sms.Splitter.Tests
                 //Split 304 character message with all extended characters
                 "\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}",
                 608,
-                304,
+                608,
                 new List<SplitPart>
                 {
                     new SplitPart
                     {
                         Content = "\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}",
-                        Length = 76,
+                        Characters = 152,
                         Bytes = 152
                     },
                     new SplitPart
                     {
                         Content = "\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}",
-                        Length = 76,
+                        Characters = 152,
                         Bytes = 152
                     },
                     new SplitPart
                     {
                         Content = "\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}",
-                        Length = 76,
+                        Characters = 152,
                         Bytes = 152
                     },
                     new SplitPart
                     {
                         Content = "\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}[~]\\\f|^€{}",
-                        Length = 76,
+                        Characters = 152,
                         Bytes = 152
                     }
                 }
@@ -195,7 +195,7 @@ namespace Sms.Splitter.Tests
                     new SplitPart
                     {
                         Content = "                                                                                                                                                                ",
-                        Length = 160,
+                        Characters = 160,
                         Bytes = 160
                     }
                 }
@@ -210,7 +210,7 @@ namespace Sms.Splitter.Tests
                     new SplitPart()
                     {
                         Content = "                                                                                                                                                                ",
-                        Length = 160,
+                        Characters = 160,
                         Bytes = 160
                     }
                 }
@@ -224,7 +224,7 @@ namespace Sms.Splitter.Tests
                 {
                     new SplitPart
                     {
-                        Length = 0,
+                        Characters = 0,
                         Content = string.Empty,
                         Bytes = 0
                     }
@@ -243,13 +243,13 @@ namespace Sms.Splitter.Tests
 
                 "\uD83D\uDC33",
                 4,
-                1,
+                2,
                 new List<SplitPart>
                 {
                     new SplitPart()
                     {
                         Content = "\uD83D\uDC33",
-                        Length = 1,
+                        Characters = 2,
                         Bytes = 4
                     }
                 }
@@ -259,13 +259,13 @@ namespace Sms.Splitter.Tests
             {
                 "\uD83D\uDC33\u2603\uD83D\uDC33",
                 10,
-                3,
+                5,
                 new List<SplitPart>
                 {
                     new SplitPart()
                     {
                         Content = "\uD83D\uDC33\u2603\uD83D\uDC33",
-                        Length = 3,
+                        Characters = 5,
                         Bytes = 10
                     }
                 }
@@ -281,7 +281,7 @@ namespace Sms.Splitter.Tests
                     new SplitPart()
                     {
                         Content = "\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603",
-                        Length = 70,
+                        Characters = 70,
                         Bytes = 140
                     }
                 }
@@ -291,13 +291,13 @@ namespace Sms.Splitter.Tests
             {
                 "\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33",
                 140,
-                35,
+                70,
                 new List<SplitPart>
                 {
                     new SplitPart()
                     {
                         Content =  "\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33",
-                        Length = 35,
+                        Characters = 70,
                         Bytes = 140
                     }
                 }
@@ -307,13 +307,13 @@ namespace Sms.Splitter.Tests
             {
                 "\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603",
                 140,
-                47,
+                70,
                 new List<SplitPart>
                 {
                     new SplitPart()
                     {
                         Content = "\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603\uD83D\uDC33\u2603",
-                        Length = 47,
+                        Characters = 70,
                         Bytes = 140
                     }
                 }
@@ -329,13 +329,13 @@ namespace Sms.Splitter.Tests
                     new SplitPart
                     {
                         Content = "\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603",
-                        Length = 67,
+                        Characters = 67,
                         Bytes = 134
                     },
                     new SplitPart
                     {
                         Content = "\u2603\u2603\u2603\u2603",
-                        Length = 4,
+                        Characters = 4,
                         Bytes = 8
                     }
                 }
@@ -344,19 +344,19 @@ namespace Sms.Splitter.Tests
             new object[] {
                 "\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\uD83D\uDC33\u2603\u2603\u2603",
                 142,
-                70,
+                71,
                 new List<SplitPart>
                 {
                     new SplitPart
                     {
                         Content = "\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603\u2603",
-                        Length = 66,
+                        Characters = 66,
                         Bytes = 132
                     },
                     new SplitPart
                     {
                         Content = "\uD83D\uDC33\u2603\u2603\u2603",
-                        Length = 4,
+                        Characters = 5,
                         Bytes = 10
                     }
                 }
@@ -366,13 +366,13 @@ namespace Sms.Splitter.Tests
             {
                 "\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\u2603\uD83D\uDC33",
                 138,
-                35,
+                69,
                 new List<SplitPart>
                 {
                     new SplitPart
                     {
                         Content = "\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\u2603\uD83D\uDC33",
-                        Length = 35,
+                        Characters = 69,
                         Bytes = 138
                     }
                 }
@@ -382,19 +382,19 @@ namespace Sms.Splitter.Tests
             {
                 "\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\u2603\uD83D\uDC33\uD83D\uDC33",
                 142,
-                36,
+                71,
                 new List<SplitPart>
                 {
                     new SplitPart()
                     {
                         Content = "\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\uD83D\uDC33\u2603",
-                        Length = 34,
+                        Characters = 67,
                         Bytes = 134
                     },
                     new SplitPart
                     {
                         Content = "\uD83D\uDC33\uD83D\uDC33",
-                        Length = 2,
+                        Characters = 4,
                         Bytes = 8
                     }
                 }

@@ -69,7 +69,6 @@ namespace Sms.Splitter
                 SplitPart part = new SplitPart
                 {
                     Bytes = result.TotalBytes,
-                    Length = result.TotalLength,
                     Content = result.Parts[0].Content + result.Parts[1].Content,
 					Characters = result.TotalBytes
                 };
@@ -83,7 +82,7 @@ namespace Sms.Splitter
         private void CalculateRemainingInPart(SplitResult result)
         {
             var max = result.Parts.Count == 1 ? 160 : 153;
-            result.RemainingInPart = (max - result.Parts.Last().Bytes) / 1;
+            result.BytesRemainingInLastPart = (max - result.Parts.Last().Bytes) / 1;
         }
 
         private class MessageWalker
@@ -97,12 +96,11 @@ namespace Sms.Splitter
         {
             result.Parts.Add(new SplitPart
             {
-                Length = walker.Length,
                 Bytes = walker.Bytes,
-                Content = walker.Content
+                Content = walker.Content,
+                Characters = walker.Bytes
             });
             result.TotalBytes += walker.Bytes;
-            result.TotalLength += walker.Length;
 			result.TotalCharacters = result.TotalBytes;
 			walker = GetEmptyWalker();
         }

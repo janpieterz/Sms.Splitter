@@ -7,24 +7,24 @@ namespace Sms.Splitter.Tests
     {
         [Theory]
         [MemberData(nameof(MessageSplittingTestsData.GsmTestData), MemberType = typeof(MessageSplittingTestsData))]
-        public void TestFullGsmSplitter(string content, int expectedTotalBytes, int expectedTotalLength,  List<SplitPart> expectedParts)
+        public void TestFullGsmSplitter(string content, int expectedTotalBytes, int expectedTotalCharacters,  List<SplitPart> expectedParts)
         {
             Splitter splitter = new Splitter();
             var result = splitter.Split(content, CharacterSet.Gsm);
             Assert.Equal(expectedTotalBytes, result.TotalBytes);
-            Assert.Equal(expectedTotalLength, result.TotalLength);
+            Assert.Equal(expectedTotalCharacters, result.TotalCharacters);
             Assert.Equal(expectedParts.Count, result.Parts.Count);
             Assert.Equal(expectedParts, result.Parts, new SplitPartComparer());
         }
 
         [Theory]
         [MemberData(nameof(MessageSplittingTestsData.UnicodeTestData), MemberType = typeof(MessageSplittingTestsData))]
-        public void TestFullUnicodeSplitter(string content, int expectedTotalBytes, int expectedTotalLength, List<SplitPart> expectedParts)
+        public void TestFullUnicodeSplitter(string content, int expectedTotalBytes, int expectedTotalCharacters, List<SplitPart> expectedParts)
         {
             Splitter splitter = new Splitter();
             var result = splitter.Split(content, CharacterSet.Unicode);
             Assert.Equal(expectedTotalBytes, result.TotalBytes);
-            Assert.Equal(expectedTotalLength, result.TotalLength);
+            Assert.Equal(expectedTotalCharacters, result.TotalCharacters);
             Assert.Equal(expectedParts.Count, result.Parts.Count);
             Assert.Equal(expectedParts, result.Parts, new SplitPartComparer());
         }
@@ -41,7 +41,7 @@ namespace Sms.Splitter.Tests
         {
             Splitter splitter = new Splitter();
             var result = splitter.Split(content);
-            Assert.Equal(expectedRemaining, result.RemainingInPart);
+            Assert.Equal(expectedRemaining, result.BytesRemainingInLastPart);
         }
 
 

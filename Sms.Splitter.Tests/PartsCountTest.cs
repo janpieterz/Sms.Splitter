@@ -25,7 +25,7 @@ namespace Sms.Splitter.Tests
     {
         public bool Equals(SplitPart x, SplitPart y)
         {
-            if (x.Bytes == y.Bytes && x.Length == y.Length && x.Content == y.Content)
+            if (x.Bytes == y.Bytes && x.Characters == y.Characters && x.Content == y.Content)
             {
                 return true;
             }
